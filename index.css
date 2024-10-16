@@ -1,0 +1,13 @@
+.container {
+  position: relative;
+  width: 640px;
+  height: 480px;
+}
+
+.container video {
+  position: absolute;
+}
+
+.container canvas {
+  position: absolute;
+}
