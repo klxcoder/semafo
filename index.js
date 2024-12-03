@@ -1,7 +1,7 @@
 const video = document.getElementById('video');
 const canvas = document.getElementById('output');
 const ctx = canvas.getContext('2d');
-const CONFIDENCE_THRESHOLD = 0.3;
+const CONFIDENCE_THRESHOLD = 0.5;
 
 // https://storage.googleapis.com/movenet/coco-keypoints-500.png
 const LINES = [
@@ -84,7 +84,7 @@ async function detectPose(model) {
     for (const line of LINES) {
       const firstPoint = pose.keypoints[line[0]];
       const secondPoint = pose.keypoints[line[1]];
-      if (isConfident(firstPoint) && isConfident(secondPoint)) {
+      if (isConfident(firstPoint) || isConfident(secondPoint)) {
         drawLine(firstPoint, secondPoint);
       }
     }
