@@ -82,7 +82,11 @@ async function detectPose(model) {
   poses.forEach(pose => {
     drawKeypoints(pose.keypoints);
     for (const line of LINES) {
-      drawLine(pose.keypoints[line[0]], pose.keypoints[line[1]]);
+      const firstPoint = pose.keypoints[line[0]];
+      const secondPoint = pose.keypoints[line[1]];
+      if (isConfident(firstPoint) && isConfident(secondPoint)) {
+        drawLine(firstPoint, secondPoint);
+      }
     }
   });
 
