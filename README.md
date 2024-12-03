@@ -3,6 +3,9 @@
 ## Overview
 A web-based application utilizing TensorFlow.js and MoveNet to perform real-time pose detection. The application detects 17 key points of the human body from a camera stream and visualizes them on an HTML canvas.
 
+## MoveNet use COCO keypoints
+![COCO keypoints](https://storage.googleapis.com/movenet/coco-keypoints-500.png)
+
 ## Features
 - Real-time pose detection with 17 key points.
 - Seamless integration with web browsers using TensorFlow.js.
