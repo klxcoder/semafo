@@ -1,6 +1,7 @@
 const video = document.getElementById('video');
 const canvas = document.getElementById('output');
 const ctx = canvas.getContext('2d');
+const CONFIDENCE_THRESHOLD = 0.3;
 
 // Load the pose detection model
 async function loadModel() {
@@ -24,7 +25,7 @@ async function setupCamera() {
 // Draw keypoints on the canvas
 function drawKeypoints(keypoints) {
   keypoints.forEach(point => {
-    if (point.score > 0.5) { // Confidence threshold
+    if (point.score > CONFIDENCE_THRESHOLD) {
       const { x, y } = point;
       ctx.beginPath();
       ctx.arc(x, y, 5, 0, 2 * Math.PI);
