@@ -1,3 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+}
+
 .container {
   position: relative;
   width: 640px;
