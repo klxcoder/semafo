@@ -40,6 +40,19 @@ function drawKeypoints(keypoints) {
   });
 }
 
+// Draw line on the canvas from point1 to point2
+function drawLine(point1, point2) {
+  const { x: x1, y: y1 } = point1;
+  const { x: x2, y: y2 } = point2;
+  ctx.beginPath();
+  ctx.moveTo(x1, y1);
+  ctx.lineTo(x2, y2);
+  ctx.strokeStyle = 'blue'; // Set line color
+  ctx.lineWidth = 2; // Set line width
+  ctx.stroke();
+}
+
+
 // Perform pose detection
 async function detectPose(model) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -47,6 +60,7 @@ async function detectPose(model) {
 
   poses.forEach(pose => {
     drawKeypoints(pose.keypoints);
+    drawLine(pose.keypoints[3], pose.keypoints[4]);
   });
 
   requestAnimationFrame(() => detectPose(model)); // Loop for continuous detection
