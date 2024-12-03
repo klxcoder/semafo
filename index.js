@@ -22,15 +22,20 @@ async function setupCamera() {
   });
 }
 
+// Draw keypoint on the canvas
+function drawKeypoint(keypoint) {
+  const { x, y } = keypoint;
+  ctx.beginPath();
+  ctx.arc(x, y, 5, 0, 2 * Math.PI);
+  ctx.fillStyle = 'red';
+  ctx.fill();
+}
+
 // Draw keypoints on the canvas
 function drawKeypoints(keypoints) {
   keypoints.forEach(point => {
     if (point.score > CONFIDENCE_THRESHOLD) {
-      const { x, y } = point;
-      ctx.beginPath();
-      ctx.arc(x, y, 5, 0, 2 * Math.PI);
-      ctx.fillStyle = 'red';
-      ctx.fill();
+      drawKeypoint(point);
     }
   });
 }
