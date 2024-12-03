@@ -49,10 +49,14 @@ function drawKeypoint(keypoint) {
   ctx.fill();
 }
 
+function isConfident(point) {
+  return point.score > CONFIDENCE_THRESHOLD;
+}
+
 // Draw keypoints on the canvas
 function drawKeypoints(keypoints) {
   keypoints.forEach(point => {
-    if (point.score > CONFIDENCE_THRESHOLD) {
+    if (isConfident(point)) {
       drawKeypoint(point);
     }
   });
